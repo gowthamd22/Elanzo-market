@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elanzo - Your Online Shopping Destination</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+    <link rel="stylesheet" href="elanzo-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>Elanzo</h1>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search for products, brands and more">
+                    <button class="search-btn" id="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="user-account">
+                        <i class="fas fa-user"></i>
+                        <span>Account</span>
+                    </div>
+                    <div class="wishlist">
+                        <i class="fas fa-heart"></i>
+                        <span>Wishlist</span>
+                        <span class="count" id="wishlist-count">0</span>
+                    </div>
+                    <div class="cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Cart</span>
+                        <span class="count" id="cart-count">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-category="all">All Products</a></li>
+                    <li><a href="#" class="nav-link" data-category="electronics">Electronics</a></li>
+                    <li><a href="#" class="nav-link" data-category="fashion">Fashion</a></li>
+                    <li><a href="#" class="nav-link" data-category="home">Home & Kitchen</a></li>
+                    <li><a href="#" class="nav-link" data-category="books">Books</a></li>
+                    <li><a href="#" class="nav-link" data-category="sports">Sports</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&h=400&fit=crop" alt="Electronics Sale">
+                <div class="hero-content">
+                    <h2>Electronics Sale</h2>
+                    <p>Up to 70% off on smartphones, laptops & more</p>
+                    <button class="cta-btn">Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="electronics">
+                    <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=200&h=200&fit=crop" alt="Electronics">
+                    <h3>Electronics</h3>
+                </div>
+                <div class="category-card" data-category="fashion">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=200&h=200&fit=crop" alt="Fashion">
+                    <h3>Fashion</h3>
+                </div>
+                <div class="category-card" data-category="home">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=200&fit=crop" alt="Home">
+                    <h3>Home & Kitchen</h3>
+                </div>
+                <div class="category-card" data-category="books">
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=200&h=200&fit=crop" alt="Books">
+                    <h3>Books</h3>
+                </div>
+                <div class="category-card" data-category="sports">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop" alt="Sports">
+                    <h3>Sports</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="products-header">
+                <h2 class="section-title">Featured Products</h2>
+                <div class="filters">
+                    <select id="sort-filter">
+                        <option value="featured">Sort by: Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Customer Rating</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+            
+            <div class="load-more">
+                <button class="load-more-btn" id="load-more-btn">Load More Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: ₹<span id="cart-total">0</span></span>
+            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="modal-body" id="modal-body">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Elanzo</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Investor Relations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Help</h3>
+                    <ul>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Policies</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Elanzo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="elanzo-data.js"></script>
+    <script src="elanzo-script.js"></script>
+</body>
+</html>
